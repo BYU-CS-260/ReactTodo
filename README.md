@@ -119,7 +119,7 @@ We need to create a callback "handleToggle" that will be passed the event and th
 ```
 And add the body of the function after "handleSubmit".  
 Notice that we first look up "target" using the index that was passed to us from the list.  
-We change the completed status of "target", then we toggle the css to change the strikethrough.  Test to make sure that you can toggle the strikethrough on your Todo list.
+We change the completed status of "target", then we toggle the css to change the strikethrough.  Test to make sure that you can toggle the strikethrough on your Todo list.  Open up your inspect window to make sure that the completed field is being set correctly after the state is toggled.
 ```
       handleToggle(event, index)  {
         const element = event.target;
@@ -129,6 +129,25 @@ We change the completed status of "target", then we toggle the css to change the
         } else {
             target.completed = true;
         }
+        console.log(this.state.tasks);
         element.classList.toggle("strike");
       }
+```
+8. Now we need to create a way to delete completed items.  First create a "Clear" button at the bottom of our ```<ul>```.
+```
+            <button onClick={this.handleFilter}>Clear Completed</button>
+```
+This button will call the "handleFilter" callback, so add the bind call in the constructor.
+```
+        this.handleFilter = this.handleFilter.bind(this);
+```
+And add the callback under "handleToggle".  We will filter out anything that is completed and set the "tasks" state to this filtered list.
+```
+      handleFilter() {
+        let filtered = this.state.tasks.filter(task => {
+          return !task.completed;
+        });
+        this.setState({tasks:filtered});
+        event.preventDefault();
+      }    
 ```
