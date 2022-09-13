@@ -1,8 +1,8 @@
 # React Todo
 
-In this learning activity you will learn how to create a Todo list with the ability to mark items as complete and to delete completed items.  Along the way you should learn a lot about how to handle events and how to manipulate the DOM.
+In this learning activity, you will learn how to create a Todo list with the ability to mark items as complete and to delete completed items.  Along the way, you should learn a lot about how to handle events and how to manipulate the DOM.
 
-1. First create your index.html file with a form where the user can enter new items.  Test it to make sure everything is working.  The key to sucessfully implementing a complex application is to test every piece of the application.  We are keeping everything in one component here, but you could experiment in creating a different component for each piece of the application. Then you could test each component seperately.
+1. First, create your index.html file with a form where the user can enter new items.  Test it to make sure everything is working.  The key to sucessfully implementing a complex application is to test every piece of the application.  We are keeping everything in one component here, but you could experiment in creating a different component for each piece of the application. Then you could test each component seperately.
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -37,14 +37,14 @@ In this learning activity you will learn how to create a Todo list with the abil
       render() {
         return (
             <div>
-            <h1> Todo List </h1>
-            <form onSubmit={this.handleSubmit} onKeyUp={this.handleChange}>
-            <label>
-              Name:
-              <input type="text" value={this.state.formtask} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-            </form>
+              <h1> Todo List </h1>
+              <form onSubmit={this.handleSubmit} onKeyUp={this.handleChange}>
+                <label>
+                  Name:
+                  <input type="text" value={this.state.formtask} onChange={this.handleChange} />
+                </label>
+                <input type="submit" value="Submit" />
+              </form>
             </div>
         );
       }
@@ -83,7 +83,7 @@ In this learning activity you will learn how to create a Todo list with the abil
   text-decoration: line-through;
 }
 ```
-Add a link to the style sheet in the ```<head``` of index.html.
+Add a link to the style sheet in the ```<head>``` of index.html.
 ```
 <link rel="stylesheet" href="index.css">
 ```
@@ -94,7 +94,7 @@ And change the way that the "listItems" are created so that a different style is
             key={thistask.task}>{thistask.task}</li>
         );
 ```
-6. Now lets create a way of adding elements to the Todo list.  "setState" tells React to change that part of the DOM, so we will set the state element "tasks" to have the current content of tasks "...this.state.tasks" concatenated to a new object with the contents of "formtask" and "completed" set to false.  We will then clear the form by setting the formtask to "".  When we change the contents of this javascript variable, React automatically changes what is seen in the DOM.  Test to make sure that you can add tasks to your Todo list.
+6. Now let's create a way of adding elements to the Todo list.  "setState" tells React to change that part of the DOM, so we will set the state element "tasks" to have the current content of tasks "...this.state.tasks" concatenated to a new object with the contents of "formtask" and "completed" set to false.  We will then clear the form by setting the formtask to "".  When we change the contents of this javascript variable, React automatically changes what is seen in the DOM.  Test to make sure that you can add tasks to your Todo list.
 ```
       handleSubmit(event) {
         // alert('A task was submitted: ' + this.state.formtask);
